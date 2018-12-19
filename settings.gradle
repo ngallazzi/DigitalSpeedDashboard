@@ -1,1 +1,1 @@
-include ':app', ':speedandrpmdashboard'
+include ':app', ':views'

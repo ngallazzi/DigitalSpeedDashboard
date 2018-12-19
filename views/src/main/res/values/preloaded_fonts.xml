@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/codystar_light</item>
+        <item>@font/days_one</item>
+        <item>@font/faster_one</item>
+        <item>@font/gruppo</item>
+        <item>@font/nixie_one</item>
+        <item>@font/press_start_2p</item>
+    </array>
+</resources>

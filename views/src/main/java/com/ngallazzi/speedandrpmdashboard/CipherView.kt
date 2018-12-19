@@ -157,6 +157,14 @@ class CipherView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         invalidate()
     }
 
+    public fun setIdleColor(color: Int) {
+        placeholderPaint.color = color
+    }
+
+    public fun setSpeedColor(color: Int) {
+        digitPaint.color = color
+    }
+
     private fun getBasePath(): Path {
 
         val p0 = PointF(initialXOffset, initialYOffset - cathetusLength * 2)

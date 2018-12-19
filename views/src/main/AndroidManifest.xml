@@ -1,2 +1,3 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.ngallazzi.speedandrpmdashboard"/>
+          package="com.ngallazzi.speedandrpmdashboard">
+</manifest>

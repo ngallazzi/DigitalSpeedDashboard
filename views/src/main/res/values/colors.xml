@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorTachometerOff">#3C3C3F41</color>
-    <color name="colorTachometerOn">#3F51B5</color>
+    <color name="colorTachometerOn">#3f51b5</color>
 </resources>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SpeedAndRpmDashboard</string>
+    <string name="km_h">Km/h</string>
 </resources>
