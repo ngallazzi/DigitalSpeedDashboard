@@ -13,12 +13,12 @@ import android.view.View
  */
 class CipherView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
-    private var sideLength: Float = 0f
+    private var sideWidth: Float = 0f
     private var initialXOffset: Float = 0f
     private var initialYOffset: Float = 0f
-    private var cathetusLength = (sideLength / 4.0f)
-    private var segmentWidth = sideLength + cathetusLength * 2
-    private var segmentHeight = cathetusLength * 2
+    private var cathetusWidth = (sideWidth / 4.0f)
+    private var segmentWidth = sideWidth + cathetusWidth * 2
+    private var segmentHeight = cathetusWidth * 2
 
     private var translationOffset = 0.0f
     private var placeholderPaint: Paint =
@@ -37,32 +37,77 @@ class CipherView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     override fun draw(canvas: Canvas?) {
         super.draw(canvas)
 
-        sideLength = Math.min(width, height) / 3.1f
-        cathetusLength = sideLength / 4.0f
-        translationOffset = cathetusLength * 1.3f
+        cathetusWidth = sideWidth / 4.0f
+        translationOffset = cathetusWidth * 1.3f
 
-        segmentWidth = sideLength + cathetusLength * 2
-        segmentHeight = cathetusLength * 2
+        segmentWidth = sideWidth + cathetusWidth * 2
+        segmentHeight = cathetusWidth * 2
 
         var realWidth = width - (paddingStart + paddingEnd)
         var realHeight = height - (paddingTop + paddingBottom)
 
         initialXOffset = (realWidth - segmentWidth) / 2
         initialYOffset = realHeight - (realHeight - ((segmentWidth + translationOffset) * 2 + segmentHeight))
+
         segmentZeroPath = getBasePath()
         segmentOnePath = getTranslatedPath(
             getRotatedPath(segmentZeroPath, 90.0f),
-            sideLength / 2 + translationOffset,
-            -sideLength / 2 - translationOffset
+            sideWidth / 2 + translationOffset,
+            -sideWidth / 2 - translationOffset
         )
-        segmentTwoPath = getTranslatedPath(segmentOnePath, -sideLength - translationOffset * 2, 0f)
-        segmentThreePath = getTranslatedPath(segmentZeroPath, 0f, -sideLength - translationOffset * 2)
-        segmentFourPath = getTranslatedPath(segmentOnePath, 0f, -sideLength - translationOffset * 2)
-        segmentFivePath = getTranslatedPath(segmentThreePath, 0f, -sideLength - translationOffset * 2)
-        segmentSixPath = getTranslatedPath(segmentTwoPath, 0f, -sideLength - translationOffset * 2)
+        segmentTwoPath = getTranslatedPath(segmentOnePath, -sideWidth - translationOffset * 2, 0f)
+        segmentThreePath = getTranslatedPath(segmentZeroPath, 0f, -sideWidth - translationOffset * 2)
+        segmentFourPath = getTranslatedPath(segmentOnePath, 0f, -sideWidth - translationOffset * 2)
+        segmentFivePath = getTranslatedPath(segmentThreePath, 0f, -sideWidth - translationOffset * 2)
+        segmentSixPath = getTranslatedPath(segmentTwoPath, 0f, -sideWidth - translationOffset * 2)
 
         drawPlaceholder(canvas!!)
         drawDigit(canvas)
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        val DEFAULT_WIDTH = 96
+        val DEFAULT_HEIGHT = (DEFAULT_WIDTH * 1.6).toInt()
+        val MAX_WIDTH = DEFAULT_WIDTH * 2
+
+        val widthMode = View.MeasureSpec.getMode(widthMeasureSpec)
+        val specifiedWidthSize = View.MeasureSpec.getSize(widthMeasureSpec)
+        val heightMode = View.MeasureSpec.getMode(heightMeasureSpec)
+        val specifiedHeightSize = View.MeasureSpec.getSize(heightMeasureSpec)
+
+        var width: Int = 0
+        var height: Int = 0
+
+        when (widthMode) {
+            MeasureSpec.EXACTLY -> {
+                width = specifiedWidthSize
+            }
+            MeasureSpec.AT_MOST -> {
+                //Can't be bigger than...
+                width = Math.min(MAX_WIDTH, specifiedWidthSize)
+            }
+            MeasureSpec.UNSPECIFIED -> {
+                width = DEFAULT_WIDTH
+            }
+        }
+
+        when (heightMode) {
+            MeasureSpec.EXACTLY -> {
+                height = specifiedHeightSize
+            }
+            MeasureSpec.AT_MOST -> {
+                //Can't be bigger than...
+                height = (width * 1.31).toInt()
+            }
+            MeasureSpec.UNSPECIFIED -> {
+                height = DEFAULT_HEIGHT
+            }
+        }
+
+        sideWidth = Math.min(width, height) / 3.1f
+
+        //MUST CALL THIS
+        setMeasuredDimension(width, height)
     }
 
     public fun drawPlaceholder(canvas: Canvas) {
@@ -167,17 +212,17 @@ class CipherView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
     private fun getBasePath(): Path {
 
-        val p0 = PointF(initialXOffset, initialYOffset - cathetusLength * 2)
+        val p0 = PointF(initialXOffset, initialYOffset - cathetusWidth * 2)
 
-        val p1 = PointF(p0.x + cathetusLength, p0.y - cathetusLength)
+        val p1 = PointF(p0.x + cathetusWidth, p0.y - cathetusWidth)
 
-        val p2 = PointF(p1.x + sideLength, p1.y)
+        val p2 = PointF(p1.x + sideWidth, p1.y)
 
-        val p3 = PointF(p0.x + sideLength + cathetusLength * 2, p2.y + cathetusLength)
+        val p3 = PointF(p0.x + sideWidth + cathetusWidth * 2, p2.y + cathetusWidth)
 
-        val p4 = PointF(p2.x, p3.y + cathetusLength)
+        val p4 = PointF(p2.x, p3.y + cathetusWidth)
 
-        val p5 = PointF(p1.x, p0.y + cathetusLength)
+        val p5 = PointF(p1.x, p0.y + cathetusWidth)
 
         return getPath(p0, p1, p2, p3, p4, p5)
     }

@@ -8,17 +8,16 @@
         tools:context=".MainActivity">
 
 
-    <com.ngallazzi.speedandrpmdashboard.SpeedAndRpmDashboard
+    <com.ngallazzi.speedandrpmdashboard.DigitalSpeedDashboard
             android:id="@+id/srDashboard"
-            android:layout_width="wrap_content"
-            android:layout_height="170dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
             app:idleColor="@color/colorIdle"
             app:speedColor="@color/colorPrimaryDark"
+            android:paddingBottom="8dp" android:paddingTop="8dp"
             android:layout_marginStart="8dp"
-            android:paddingBottom="8dp" android:paddingTop="8dp" android:layout_marginEnd="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"/>
 

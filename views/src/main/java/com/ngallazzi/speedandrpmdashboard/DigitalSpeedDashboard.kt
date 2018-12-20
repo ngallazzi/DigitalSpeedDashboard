@@ -6,7 +6,6 @@ import android.support.constraint.ConstraintLayout
 import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.widget.TextView
-import com.ngallazzi.speedandrpmdashboard.R.id.tvUnit
 import java.util.*
 
 
@@ -15,7 +14,7 @@ import java.util.*
  * Created by Nicola on 12/6/2018.
  * Copyright © 2018 Zehus. All rights reserved.
  */
-class SpeedAndRpmDashboard @JvmOverloads constructor(
+class DigitalSpeedDashboard @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -25,36 +24,33 @@ class SpeedAndRpmDashboard @JvmOverloads constructor(
     private var cvDigits: CipherView
     private var cvDozens: CipherView
     private var cvHundreds: CipherView
-    private var tvUnit: TextView
     private var attributes: TypedArray
     private var mTachometerOnColor: Int
     private var mTachometerOffColor: Int
 
     init {
-        inflate(context, R.layout.speed_and_rpm_dashboard_layout, this)
+        inflate(context, R.layout.digital_speed_dashboard_layout, this)
         cvDigits = findViewById(R.id.cvDigits)
         cvDozens = findViewById(R.id.cvDozens)
         cvHundreds = findViewById(R.id.cvHundreds)
-        tvUnit = findViewById(R.id.tvUnit)
         attributes = context.theme.obtainStyledAttributes(
             attrs,
-            R.styleable.SpeedAndRpmDashboard,
+            R.styleable.DigitalSpeedDashboard,
             0, 0
         )
 
         mTachometerOnColor = attributes.getColor(
-            R.styleable.SpeedAndRpmDashboard_speedColor,
+            R.styleable.DigitalSpeedDashboard_speedColor,
             ContextCompat.getColor(context, R.color.colorTachometerOn)
         )
         mTachometerOffColor = attributes.getColor(
-            R.styleable.SpeedAndRpmDashboard_idleColor,
+            R.styleable.DigitalSpeedDashboard_idleColor,
             ContextCompat.getColor(context, R.color.colorTachometerOff)
         )
 
         cvHundreds.setSpeedColor(mTachometerOnColor)
         cvDozens.setSpeedColor(mTachometerOnColor)
         cvDigits.setSpeedColor(mTachometerOnColor)
-        tvUnit.setTextColor(mTachometerOnColor)
 
         cvHundreds.setIdleColor(mTachometerOffColor)
         cvDozens.setIdleColor(mTachometerOffColor)

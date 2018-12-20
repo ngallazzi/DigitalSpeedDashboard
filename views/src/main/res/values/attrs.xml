@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="SpeedAndRpmDashboard">
+    <declare-styleable name="DigitalSpeedDashboard">
         <attr name="idleColor" format="color" />
         <attr name="speedColor" format="color" />
         <attr name="backgroundColor" format="color" />
