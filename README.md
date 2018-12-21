@@ -22,6 +22,21 @@ allprojects {
 	}
 }
 ```
+# In your .xml
+```groovy
+<com.ngallazzi.speedandrpmdashboard.DigitalSpeedDashboard
+            android:id="@+id/srDashboard"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            app:idleColor="@color/colorIdle"
+            android:background="#000000"
+            app:speedColor="#FFFFFF"
+            android:paddingBottom="8dp" android:paddingTop="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
+```
 
 # Options
  - custom **idleColor**: "custom:idleColor"
