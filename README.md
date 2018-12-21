@@ -28,7 +28,7 @@ allprojects {
             android:id="@+id/srDashboard"
             android:layout_width="350dp"
             android:layout_height="350dp"
-            app:idleColor="@color/colorIdle"
+            app:idleColor="#35ABABAB"
             android:background="#000000"
             app:speedColor="#FFFFFF"/>
 ```
