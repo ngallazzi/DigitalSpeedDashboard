@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         // Create the Handler object (on the main thread by default)
         val handler = Handler()
+        srDashboard.setMaxSpeed(200)
         // Define the code block to be executed
         val runnableCode = object : Runnable {
             override fun run() {
@@ -25,11 +26,10 @@ class MainActivity : AppCompatActivity() {
                 srDashboard.setSpeed(speed)
                 // Repeat this the same runnable code block again another 2 seconds
                 // 'this' is referencing the Runnable object
-                handler.postDelayed(this, 1000)
-                if (speed == 999) {
+                handler.postDelayed(this, 100)
+                if (speed == 200) {
                     speed = 0
                 }
-                Log.v(TAG, "Speed: $speed")
             }
         }
         // Start the initial runnable task by posting through the handler

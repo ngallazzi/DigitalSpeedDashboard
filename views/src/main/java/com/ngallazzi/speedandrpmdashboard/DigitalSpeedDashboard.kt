@@ -2,6 +2,8 @@ package com.ngallazzi.speedandrpmdashboard
 
 import android.content.Context
 import android.content.res.TypedArray
+import android.graphics.Canvas
+import android.graphics.Paint
 import android.support.constraint.ConstraintLayout
 import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
@@ -24,6 +26,7 @@ class DigitalSpeedDashboard @JvmOverloads constructor(
     private var cvDigits: CipherView
     private var cvDozens: CipherView
     private var cvHundreds: CipherView
+    private var cpvProgress: CircleProgressView
     private var attributes: TypedArray
     private var mTachometerOnColor: Int
     private var mTachometerOffColor: Int
@@ -33,6 +36,8 @@ class DigitalSpeedDashboard @JvmOverloads constructor(
         cvDigits = findViewById(R.id.cvDigits)
         cvDozens = findViewById(R.id.cvDozens)
         cvHundreds = findViewById(R.id.cvHundreds)
+        cpvProgress = findViewById(R.id.cpvProgress)
+
         attributes = context.theme.obtainStyledAttributes(
             attrs,
             R.styleable.DigitalSpeedDashboard,
@@ -55,12 +60,17 @@ class DigitalSpeedDashboard @JvmOverloads constructor(
         cvHundreds.setIdleColor(mTachometerOffColor)
         cvDozens.setIdleColor(mTachometerOffColor)
         cvDigits.setIdleColor(mTachometerOffColor)
-    }
 
+    }
 
     fun setSpeed(speed: Int) {
         currentSpeed = speed
         setDigitsToViews()
+        cpvProgress.setProgress(speed)
+    }
+
+    fun setMaxSpeed(speed: Int) {
+        cpvProgress.setMaxProgress(speed)
     }
 
     private fun getDigitsFromSpeed(): ArrayList<Int> {
@@ -78,10 +88,13 @@ class DigitalSpeedDashboard @JvmOverloads constructor(
         when (digits.size) {
             1 -> {
                 cvDigits.setDigit(digits[0])
+                cvDozens.setDigit(0)
+                cvHundreds.setDigit(0)
             }
             2 -> {
                 cvDigits.setDigit(digits[0])
                 cvDozens.setDigit(digits[1])
+                cvHundreds.setDigit(0)
             }
             3 -> {
                 cvDigits.setDigit(digits[0])
@@ -90,5 +103,4 @@ class DigitalSpeedDashboard @JvmOverloads constructor(
             }
         }
     }
-
 }

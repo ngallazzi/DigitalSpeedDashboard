@@ -1,31 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools" android:padding="8dp"
+                                             android:padding="8dp"
                                              android:layout_width="match_parent"
-                                             android:layout_height="wrap_content"
-                                             android:orientation="vertical" tools:layout_editor_absoluteY="73dp">
+                                             android:orientation="vertical" android:layout_height="match_parent">
 
-    <com.ngallazzi.speedandrpmdashboard.CipherView
-            android:id="@+id/cvHundreds"
+    <com.ngallazzi.speedandrpmdashboard.CircleProgressView
+            android:id="@+id/cpvProgress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toStartOf="@+id/cvDozens"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"/>
+    <com.ngallazzi.speedandrpmdashboard.CipherView
+            android:id="@+id/cvHundreds"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent=".2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/cvDozens"
+            app:layout_constraintHorizontal_chainStyle="packed"/>
 
     <com.ngallazzi.speedandrpmdashboard.CipherView
             android:id="@+id/cvDozens"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_percent=".2"
             app:layout_constraintStart_toEndOf="@+id/cvHundreds" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toStartOf="@+id/cvDigits"/>
+            app:layout_constraintEnd_toStartOf="@+id/cvDigits"
+            app:layout_constraintTop_toTopOf="@+id/cvHundreds"
+            app:layout_constraintBottom_toBottomOf="@+id/cvHundreds"/>
 
     <com.ngallazzi.speedandrpmdashboard.CipherView
             android:id="@+id/cvDigits"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:layout_constraintWidth_percent=".2"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toEndOf="@+id/cvDozens"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"/>
