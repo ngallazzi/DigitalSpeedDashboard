@@ -40,6 +40,8 @@ allprojects {
  
 # Public Methods
 
+- setSpeed(speed: Int): sets the current speed in the layout
+- setMaxSpeed(speed: Int): sets the maximum speed progress for the circle speed bar. When the speed reaches the max speed limit, the speed bar is totally full
  
  # License
 ```groovy 
