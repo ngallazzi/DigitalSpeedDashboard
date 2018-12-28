@@ -34,9 +34,9 @@ allprojects {
 ```
 
 # Options
- - custom **idleColor**: "custom:idleColor"
- - custom **speedColor**: "custom:speedColor"
- - custom **backgroundColor**: "custom:backgroundColor"
+ - custom **idleColor**: "custom:idleColor" - sets the background color of the seven segments display
+ - custom **speedColor**: "custom:speedColor" - sets the color of the seven segments display
+ - custom **backgroundColor**: "custom:backgroundColor" - sets the color of the dashboard background
  
 # Public Methods
 
