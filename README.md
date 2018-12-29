@@ -12,7 +12,7 @@ A simple speed dashboard displayed with a 7-segment display
 
 in your build.gradle (Module)
 ```groovy
-compile 'com.github.ngallazzi:DigitalSpeedDashboard:master-SNAPSHOT'
+implementation 'com.github.ngallazzi:DigitalSpeedDashboard:master-SNAPSHOT'
 ```
 
 in your build.gradle (Project)
