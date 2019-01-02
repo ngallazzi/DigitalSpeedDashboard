@@ -4,6 +4,8 @@
         <attr name="idleColor" format="color" />
         <attr name="speedColor" format="color" />
         <attr name="backgroundColor" format="color" />
+        <attr name="ringBaseColor" format="color" />
+        <attr name="circleIndicatorColor" format="color" />
     </declare-styleable>
 
 </resources>

@@ -1,10 +1,10 @@
 package com.ngallazzi.speedandrpmdashboard
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.*
 import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 
 
@@ -27,17 +27,50 @@ class CircleProgressView(context: Context, attrs: AttributeSet) : View(context, 
     private var maxProgress = 360.0f
     private var mProgress = 0.0f
     private var mProgressAngle = 0.0f
+    private var mRingBaseColor: Int = ContextCompat.getColor(context, R.color.colorTachometerOn)
+    private var mRingBackgroundColor: Int
+    private lateinit var mProgressColors: IntArray
+
 
     init {
-        ringBackgroundPaint.color = ContextCompat.getColor(context, R.color.colorTachometerOff)
+
+        setRingBaseColor(mRingBaseColor)
+
+        mRingBackgroundColor = ContextCompat.getColor(context, R.color.colorTachometerOff)
+
+        setProgressColors(mRingBaseColor)
+
+        ringBackgroundPaint.color = mRingBackgroundColor
         ringBackgroundPaint.style = Paint.Style.STROKE
         ringBackgroundPaint.strokeWidth = BASE_STROKE_WIDTH
 
-        ringProgressPaint.color = ContextCompat.getColor(context, R.color.colorTachometerOn)
+        ringProgressPaint.color = mRingBaseColor
         ringProgressPaint.style = Paint.Style.STROKE
         ringProgressPaint.strokeWidth = BASE_STROKE_WIDTH / 1.8f
 
         circleIndicatorPaint.color = ContextCompat.getColor(context, R.color.circleIndicatorColor)
+
+    }
+
+    public fun setRingBaseColor(color: Int) {
+        ringProgressPaint.color = color
+    }
+
+    public fun setCircleIndicatorColor(color: Int) {
+        circleIndicatorPaint.color = color
+    }
+
+    private fun setProgressColors(baseColor: Int) {
+        mProgressColors = IntArray(11)
+        mProgressColors[0] = ContextCompat.getColor(context, R.color.colorTachometerOff)
+        for (i in 1..10) {
+            mProgressColors[i] = getColorWithAlpha(i * 10, baseColor)
+        }
+    }
+
+    private fun getColorWithAlpha(alphaPercentage: Int, color: Int): Int {
+        val alpha = (alphaPercentage / 100.0f) * 255.0f
+        return Color.argb(alpha.toInt(), Color.red(color), Color.green(color), Color.blue(color))
     }
 
     override fun onDraw(canvas: Canvas?) {
@@ -52,21 +85,9 @@ class CircleProgressView(context: Context, attrs: AttributeSet) : View(context, 
         centerX = width / 2.0f
         centerY = height / 2.0f
         radius = (width - ringBackgroundPaint.strokeWidth - 10) / 2.0f
-        var colors = intArrayOf(
-            ContextCompat.getColor(context, R.color.colorTachometerOff),
-            ContextCompat.getColor(context, R.color.colorTachometerOn_10),
-            ContextCompat.getColor(context, R.color.colorTachometerOn_20),
-            ContextCompat.getColor(context, R.color.colorTachometerOn_30),
-            ContextCompat.getColor(context, R.color.colorTachometerOn_40),
-            ContextCompat.getColor(context, R.color.colorTachometerOn_50),
-            ContextCompat.getColor(context, R.color.colorTachometerOn_60),
-            ContextCompat.getColor(context, R.color.colorTachometerOn_70),
-            ContextCompat.getColor(context, R.color.colorTachometerOn_80),
-            ContextCompat.getColor(context, R.color.colorTachometerOn_90),
-            ContextCompat.getColor(context, R.color.colorTachometerOn)
-        )
+
         var positions = floatArrayOf(0.0f, 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1.0f)
-        ringProgressPaint.shader = SweepGradient(centerX, centerY, colors, positions)
+        ringProgressPaint.shader = SweepGradient(centerX, centerY, mProgressColors, positions)
     }
 
     private fun drawBackgroundCircle(canvas: Canvas?) {

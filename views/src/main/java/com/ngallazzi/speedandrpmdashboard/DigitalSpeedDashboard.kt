@@ -2,12 +2,9 @@ package com.ngallazzi.speedandrpmdashboard
 
 import android.content.Context
 import android.content.res.TypedArray
-import android.graphics.Canvas
-import android.graphics.Paint
 import android.support.constraint.ConstraintLayout
 import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
-import android.widget.TextView
 import java.util.*
 
 
@@ -30,6 +27,8 @@ class DigitalSpeedDashboard @JvmOverloads constructor(
     private var attributes: TypedArray
     private var mTachometerOnColor: Int
     private var mTachometerOffColor: Int
+    private var mProgressColor: Int
+    private var mRingBaseColor: Int
 
     init {
         inflate(context, R.layout.digital_speed_dashboard_layout, this)
@@ -48,9 +47,20 @@ class DigitalSpeedDashboard @JvmOverloads constructor(
             R.styleable.DigitalSpeedDashboard_speedColor,
             ContextCompat.getColor(context, R.color.colorTachometerOn)
         )
+
         mTachometerOffColor = attributes.getColor(
             R.styleable.DigitalSpeedDashboard_idleColor,
             ContextCompat.getColor(context, R.color.colorTachometerOff)
+        )
+
+        mProgressColor = attributes.getColor(
+            R.styleable.DigitalSpeedDashboard_ringBaseColor,
+            ContextCompat.getColor(context, R.color.colorTachometerOn)
+        )
+
+        mRingBaseColor = attributes.getColor(
+            R.styleable.DigitalSpeedDashboard_ringBaseColor,
+            ContextCompat.getColor(context, R.color.colorTachometerOn)
         )
 
         cvHundreds.setSpeedColor(mTachometerOnColor)
