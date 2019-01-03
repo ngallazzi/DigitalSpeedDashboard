@@ -88,7 +88,7 @@ class DigitalSpeedDashboard @JvmOverloads constructor(
     }
 
     private fun getDigitsFromSpeed(): ArrayList<Int> {
-        var digits = ArrayList<Int>()
+        val digits = ArrayList<Int>()
         var speed = currentSpeed
         while (speed > 0) {
             digits.add(speed % 10)
@@ -98,7 +98,7 @@ class DigitalSpeedDashboard @JvmOverloads constructor(
     }
 
     private fun setDigitsToViews() {
-        var digits = getDigitsFromSpeed()
+        val digits = getDigitsFromSpeed()
         when (digits.size) {
             1 -> {
                 cvDigits.setDigit(digits[0])

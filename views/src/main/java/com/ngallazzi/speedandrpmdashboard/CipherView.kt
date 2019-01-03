@@ -43,8 +43,8 @@ class CipherView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         segmentWidth = sideWidth + cathetusWidth * 2
         segmentHeight = cathetusWidth * 2
 
-        var realWidth = width - (paddingStart + paddingEnd)
-        var realHeight = height - (paddingTop + paddingBottom)
+        val realWidth = width - (paddingStart + paddingEnd)
+        val realHeight = height - (paddingTop + paddingBottom)
 
         initialXOffset = (realWidth - segmentWidth) / 2
         initialYOffset = realHeight - (realHeight - ((segmentWidth + translationOffset) * 2 + segmentHeight))
@@ -75,8 +75,8 @@ class CipherView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         val heightMode = View.MeasureSpec.getMode(heightMeasureSpec)
         val specifiedHeightSize = View.MeasureSpec.getSize(heightMeasureSpec)
 
-        var width: Int = 0
-        var height: Int = 0
+        var width = 0
+        var height = 0
 
         when (widthMode) {
             MeasureSpec.EXACTLY -> {
@@ -110,7 +110,7 @@ class CipherView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         setMeasuredDimension(width, height)
     }
 
-    public fun drawPlaceholder(canvas: Canvas) {
+    private fun drawPlaceholder(canvas: Canvas) {
         for (index in 0..9) {
             drawSegment(index, canvas, placeholderPaint)
         }
@@ -197,16 +197,16 @@ class CipherView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         }
     }
 
-    public fun setDigit(digit: Int) {
+    fun setDigit(digit: Int) {
         currentDigit = digit
         invalidate()
     }
 
-    public fun setIdleColor(color: Int) {
+    fun setIdleColor(color: Int) {
         placeholderPaint.color = color
     }
 
-    public fun setSpeedColor(color: Int) {
+    fun setSpeedColor(color: Int) {
         digitPaint.color = color
     }
 
@@ -228,7 +228,7 @@ class CipherView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     }
 
     private fun getRotatedPath(sourcePath: Path, degrees: Float): Path {
-        var pathToRotate = Path(sourcePath)
+        val pathToRotate = Path(sourcePath)
         val matrix = Matrix()
         val bounds = RectF()
         pathToRotate.computeBounds(bounds, true)
@@ -238,7 +238,7 @@ class CipherView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     }
 
     private fun getTranslatedPath(sourcePath: Path, dx: Float, dy: Float): Path {
-        var pathToTranslate = Path(sourcePath)
+        val pathToTranslate = Path(sourcePath)
         val translateMatrix = Matrix()
         translateMatrix.setTranslate(dx, dy)
         pathToTranslate.transform(translateMatrix)

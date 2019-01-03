@@ -3,7 +3,6 @@ package com.ngallazzi.speedandrpmdashboardsample
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 
 

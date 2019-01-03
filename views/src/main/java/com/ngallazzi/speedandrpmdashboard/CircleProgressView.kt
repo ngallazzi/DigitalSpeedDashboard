@@ -1,7 +1,6 @@
 package com.ngallazzi.speedandrpmdashboard
 
 import android.content.Context
-import android.content.res.TypedArray
 import android.graphics.*
 import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
@@ -52,15 +51,15 @@ class CircleProgressView(context: Context, attrs: AttributeSet) : View(context, 
 
     }
 
-    public fun setRingBaseColor(color: Int) {
+    fun setRingBaseColor(color: Int) {
         ringProgressPaint.color = color
     }
 
-    public fun setCircleIndicatorColor(color: Int) {
+    fun setCircleIndicatorColor(color: Int) {
         circleIndicatorPaint.color = color
     }
 
-    public fun setProgressColors(baseColor: Int) {
+    fun setProgressColors(baseColor: Int) {
         mProgressColors = IntArray(11)
         mProgressColors[0] = ContextCompat.getColor(context, R.color.colorTachometerOff)
         for (i in 1..10) {
@@ -86,7 +85,7 @@ class CircleProgressView(context: Context, attrs: AttributeSet) : View(context, 
         centerY = height / 2.0f
         radius = (width - ringBackgroundPaint.strokeWidth - 10) / 2.0f
 
-        var positions = floatArrayOf(0.0f, 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1.0f)
+        val positions = floatArrayOf(0.0f, 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1.0f)
         ringProgressPaint.shader = SweepGradient(centerX, centerY, mProgressColors, positions)
     }
 
@@ -100,8 +99,8 @@ class CircleProgressView(context: Context, attrs: AttributeSet) : View(context, 
     }
 
     private fun drawCircleIndicator(canvas: Canvas?) {
-        var xCoordinate = centerX + radius * Math.cos(Math.toRadians(mProgressAngle.toDouble()))
-        var yCoordinate = centerY + radius * Math.sin(Math.toRadians(mProgressAngle.toDouble()))
+        val xCoordinate = centerX + radius * Math.cos(Math.toRadians(mProgressAngle.toDouble()))
+        val yCoordinate = centerY + radius * Math.sin(Math.toRadians(mProgressAngle.toDouble()))
 
         canvas?.drawCircle(
             xCoordinate.toFloat(),
@@ -110,11 +109,11 @@ class CircleProgressView(context: Context, attrs: AttributeSet) : View(context, 
         )
     }
 
-    public fun setMaxProgress(progress: Int) {
+    fun setMaxProgress(progress: Int) {
         maxProgress = progress.toFloat()
     }
 
-    public fun setProgress(progress: Int) {
+    fun setProgress(progress: Int) {
         mProgress = progress.toFloat()
         updateProgressAngle()
     }
@@ -138,7 +137,6 @@ class CircleProgressView(context: Context, attrs: AttributeSet) : View(context, 
 
     companion object {
         const val BASE_STROKE_WIDTH = 55f
-        val TAG = CircleProgressView::class.simpleName
     }
 }
 

@@ -9,7 +9,7 @@ import java.util.*
  */
 class DigitUtils {
     companion object {
-        public fun getDigitsFromSpeed(speed: Int): LinkedList<Int> {
+        fun getDigitsFromSpeed(speed: Int): LinkedList<Int> {
             val stack = LinkedList<Int>()
             var currentSpeed = speed
             while (currentSpeed > 0) {
@@ -19,7 +19,7 @@ class DigitUtils {
             return stack
         }
 
-        public fun getBitmaskForDigit(digit: Int): Byte {
+        fun getBitmaskForDigit(digit: Int): Byte {
             return when (digit) {
                 0 -> ZERO_BITMASK // 0,1,2,4,5,6
                 1 -> ONE_BITMASK // 1,4
@@ -35,16 +35,16 @@ class DigitUtils {
             }
         }
 
-        const val ZERO_BITMASK = 0b1110111.toByte()
-        const val ONE_BITMASK = 0b0001010.toByte()
-        const val TWO_BITMASK = 0b0111100.toByte()
-        const val THREE_BITMASK = 0b0111011.toByte()
-        const val FOUR_BITMASK = 0b1011010.toByte()
-        const val FIVE_BITMASK = 0b1101010.toByte()
-        const val SIX_BITMASK = 0b1101111.toByte()
-        const val SEVEN_BITMASK = 0b0110011.toByte()
-        const val EIGHT_BITMASK = 0b1110111.toByte()
-        const val NINE_BITMASK = 0b1110111.toByte()
+        private const val ZERO_BITMASK = 0b1110111.toByte()
+        private const val ONE_BITMASK = 0b0001010.toByte()
+        private const val TWO_BITMASK = 0b0111100.toByte()
+        private const val THREE_BITMASK = 0b0111011.toByte()
+        private const val FOUR_BITMASK = 0b1011010.toByte()
+        private const val FIVE_BITMASK = 0b1101010.toByte()
+        private const val SIX_BITMASK = 0b1101111.toByte()
+        private const val SEVEN_BITMASK = 0b0110011.toByte()
+        private const val EIGHT_BITMASK = 0b1110111.toByte()
+        private const val NINE_BITMASK = 0b1110111.toByte()
 
     }
 }
