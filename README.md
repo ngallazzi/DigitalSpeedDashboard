@@ -37,6 +37,8 @@ allprojects {
  - custom **idleColor**: "custom:idleColor" - sets the background color of the seven segments display
  - custom **speedColor**: "custom:speedColor" - sets the color of the seven segments display
  - custom **backgroundColor**: "custom:backgroundColor" - sets the color of the dashboard background
+ - custom **ringBaseColor**: "custom:ringBaseColor" - sets the base color for circle progress
+ - custom **circleIndicatorColor**: "custom:circleIndicatorColor" - sets the color of the circle indicator
  
 # Public Methods
 

@@ -27,8 +27,8 @@ class DigitalSpeedDashboard @JvmOverloads constructor(
     private var attributes: TypedArray
     private var mTachometerOnColor: Int
     private var mTachometerOffColor: Int
-    private var mProgressColor: Int
     private var mRingBaseColor: Int
+    private var mIndicatorColor: Int
 
     init {
         inflate(context, R.layout.digital_speed_dashboard_layout, this)
@@ -53,14 +53,14 @@ class DigitalSpeedDashboard @JvmOverloads constructor(
             ContextCompat.getColor(context, R.color.colorTachometerOff)
         )
 
-        mProgressColor = attributes.getColor(
+        mRingBaseColor = attributes.getColor(
             R.styleable.DigitalSpeedDashboard_ringBaseColor,
             ContextCompat.getColor(context, R.color.colorTachometerOn)
         )
 
-        mRingBaseColor = attributes.getColor(
-            R.styleable.DigitalSpeedDashboard_ringBaseColor,
-            ContextCompat.getColor(context, R.color.colorTachometerOn)
+        mIndicatorColor = attributes.getColor(
+            R.styleable.DigitalSpeedDashboard_circleIndicatorColor,
+            ContextCompat.getColor(context, R.color.circleIndicatorColor)
         )
 
         cvHundreds.setSpeedColor(mTachometerOnColor)
@@ -70,6 +70,10 @@ class DigitalSpeedDashboard @JvmOverloads constructor(
         cvHundreds.setIdleColor(mTachometerOffColor)
         cvDozens.setIdleColor(mTachometerOffColor)
         cvDigits.setIdleColor(mTachometerOffColor)
+
+        cpvProgress.setRingBaseColor(mRingBaseColor)
+        cpvProgress.setProgressColors(mRingBaseColor)
+        cpvProgress.setCircleIndicatorColor(mIndicatorColor)
 
     }
 

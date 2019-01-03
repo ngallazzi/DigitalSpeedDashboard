@@ -5,7 +5,6 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000000"
         tools:context=".MainActivity" tools:layout_editor_absoluteY="73dp">
 
 
@@ -13,11 +12,11 @@
             android:id="@+id/srDashboard"
             android:layout_width="350dp"
             android:layout_height="350dp"
-            android:background="#000000"
-            app:circleIndicatorColor="#47074B"
+            android:background="#FFFFFF"
+            app:circleIndicatorColor="#FF5722"
             app:idleColor="@color/colorIdle"
-            app:ringBaseColor="#F6D10D"
-            app:speedColor="#FFFFFF"
+            app:ringBaseColor="#E64A19"
+            app:speedColor="#E64A19"
             android:paddingBottom="8dp" android:paddingTop="8dp"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"

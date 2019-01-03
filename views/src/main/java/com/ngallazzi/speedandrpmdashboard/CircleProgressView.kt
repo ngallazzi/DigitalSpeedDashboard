@@ -60,7 +60,7 @@ class CircleProgressView(context: Context, attrs: AttributeSet) : View(context, 
         circleIndicatorPaint.color = color
     }
 
-    private fun setProgressColors(baseColor: Int) {
+    public fun setProgressColors(baseColor: Int) {
         mProgressColors = IntArray(11)
         mProgressColors[0] = ContextCompat.getColor(context, R.color.colorTachometerOff)
         for (i in 1..10) {
