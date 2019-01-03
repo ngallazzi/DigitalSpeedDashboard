@@ -1,6 +1,9 @@
+[![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-DigitalSpeedDashboard-green.svg?style=flat )]( https://android-arsenal.com/details/1/7413 )
+[![API](https://img.shields.io/badge/API-19%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=19)
+<br>
 # DigitalSpeedDashboard
 
-A simple speed dashboard with a 7-segment display
+A simple speed dashboard displayed with a 7-segment display
 <div>
   <img src="https://raw.githubusercontent.com/ngallazzi/DigitalSpeedDashboard/master/2pivz4.gif" width="250" hspace="20" />
   <br/>
@@ -10,7 +13,7 @@ A simple speed dashboard with a 7-segment display
 
 in your build.gradle (Module)
 ```groovy
-compile 'com.github.ngallazzi:DigitalSpeedDashboard:master-SNAPSHOT'
+implementation 'com.github.ngallazzi:DigitalSpeedDashboard:master-SNAPSHOT'
 ```
 
 in your build.gradle (Project)
