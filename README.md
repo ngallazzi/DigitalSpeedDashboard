@@ -31,9 +31,16 @@ allprojects {
             android:id="@+id/srDashboard"
             android:layout_width="350dp"
             android:layout_height="350dp"
+            android:background="#212121"
+            app:circleIndicatorColor="#303F9F"
             app:idleColor="#35ABABAB"
-            android:background="#000000"
-            app:speedColor="#FFFFFF"/>
+            app:ringBaseColor="#3F51B5"
+            app:speedColor="#FFFFFF"
+            android:paddingBottom="8dp" android:paddingTop="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
 ```
 
 # Options
