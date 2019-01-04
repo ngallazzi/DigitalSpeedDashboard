@@ -6,7 +6,6 @@
 A simple speed dashboard displayed with a 7-segment display
 <div>
 	<img src="https://raw.githubusercontent.com/ngallazzi/DigitalSpeedDashboard/master/2pivz4.gif" width="200" hspace="20" />
-	<br>
 	<img src="https://raw.githubusercontent.com/ngallazzi/DigitalSpeedDashboard/master/20190103_152459.gif" width="100" hspace="20"/>
 	<img src="https://raw.githubusercontent.com/ngallazzi/DigitalSpeedDashboard/master/20190103_152714.gif" width="100" hspace="20"/>
 	<img src="https://raw.githubusercontent.com/ngallazzi/DigitalSpeedDashboard/master/20190103_152823.gif" width="100" hspace="20"/>
